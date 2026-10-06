@@ -5,6 +5,7 @@ metrics (resting HR, HRV, SpO2...) some time after you wake up. So each sync re-
 a rolling window instead of only "new" points, and covers any gap since the last
 successful sync (e.g. after a week with an expired login).
 """
+import os
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta, timezone
@@ -126,7 +127,7 @@ class Syncer:
         self.running = False
 
     def tz(self):
-        name = (self.db.meta("settings") or {}).get("timeZone")
+        name = (self.db.meta("settings") or {}).get("timeZone") or _system_tz_name()
         try:
             return ZoneInfo(name) if name else datetime.now().astimezone().tzinfo
         except Exception:
@@ -356,6 +357,16 @@ class Syncer:
                     if val is not None:
                         self.db.put_series(metric, utc_iso(parse_ts(p["startTime"])), val, extra)
             s = e
+
+
+def _system_tz_name():
+    """This computer's IANA zone (e.g. "Europe/Berlin"), for accounts whose settings don't name one."""
+    if os.environ.get("TZ"):
+        return os.environ["TZ"].lstrip(":")
+    try:
+        return os.path.realpath("/etc/localtime").split("zoneinfo/", 1)[1]
+    except IndexError:
+        return None
 
 
 def _offset_seconds(s):

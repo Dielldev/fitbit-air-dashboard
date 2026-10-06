@@ -8,3 +8,4 @@ macwidget/build/
 *.log
 xcuserdata/
 *.xcuserstate
+demo-data/

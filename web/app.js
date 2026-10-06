@@ -188,7 +188,7 @@ function render() {
   $("#foot").replaceChildren(
     h("span", null, "Read-only from the Google Health API"),
     h("span", null, "History lives on this computer (data/health.db)"),
-    h("span", null, `Time zone ${D.tz}`));
+    D.tz ? h("span", null, `Time zone ${D.tz}`) : null);
 }
 
 // ---- ring card ------------------------------------------------------------------------

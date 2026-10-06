@@ -264,7 +264,8 @@ def build_dashboard(days, on=None):
         })
 
     return {
-        "now": now.isoformat(), "today": today.isoformat(), "tz": str(tz), "goals": g,
+        # The page passes tz to Intl, which only accepts IANA names ("Europe/Berlin", not "CEST").
+        "now": now.isoformat(), "today": today.isoformat(), "tz": getattr(tz, "key", None), "goals": g,
         "units": {"distance": settings.get("distanceUnit"), "temperature": settings.get("temperatureUnit")},
         "status": status_block(),
         "day": day_block, "sleep": sleep_block, "recovery": recovery,
