@@ -1,0 +1,10 @@
+data/
+__pycache__/
+*.pyc
+widget/**/secret
+widget/**/position
+macwidget/build/
+.DS_Store
+*.log
+xcuserdata/
+*.xcuserstate

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Air Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ee8bb0'/%3E%3Cstop offset='.5' stop-color='%23f4ac68'/%3E%3Cstop offset='1' stop-color='%23a99df7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='11' fill='none' stroke='url(%23g)' stroke-width='5' stroke-linecap='round' stroke-dasharray='55 100' transform='rotate(-90 16 16)'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Outfit:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    try { const t = localStorage.getItem("airdash.theme"); if (t) document.documentElement.dataset.theme = JSON.parse(t); } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="hello">
+        <div class="avatar" id="avatar" aria-hidden="true"></div>
+        <div>
+          <p class="greet" id="greet">&nbsp;</p>
+          <h1 id="title">Loading…</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="pill fresh" id="fresh" aria-live="polite"></div>
+        <button class="round" id="sync" type="button" aria-label="Sync now" title="Pull the latest data from Google"></button>
+        <button class="round" id="theme" type="button" aria-label="Switch light or dark theme"></button>
+      </div>
+    </header>
+    <div id="banners"></div>
+    <nav class="strip" id="strip" aria-label="Pick a day"></nav>
+    <main id="app"></main>
+    <footer id="foot"></footer>
+  </div>
+  <div class="tip" id="tip" role="tooltip"></div>
+  <script src="charts.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
