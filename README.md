@@ -6,10 +6,7 @@
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/dashboard-dark.png">
-    <img src="docs/dashboard-light.png" alt="The dashboard: a 14-day step streak, today's steps ring, activity stats, steps by hour and a suggestion card" width="100%">
-  </picture>
+  <img src="docs/dashboard.png" alt="The dashboard: a 14-day step streak, today's steps ring, activity stats, steps by hour and a suggestion card" width="100%">
 </p>
 
 <p align="center"><sub>Screenshots use made-up demo data (<code>demo.py</code>).</sub></p>
